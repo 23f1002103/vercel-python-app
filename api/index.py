@@ -16,9 +16,10 @@ def get_student_marks():
     names = request.args.getlist("name")
     marks = []
     for name in names:
-        mark = next((item['mark'] for item in student_data if item['name'] == name), None)
+        # Changed 'mark' to 'marks' to match your JSON structure
+        mark = next((item['marks'] for item in student_data if item['name'] == name), None)
         marks.append(mark)
     return jsonify({"marks": marks})
-  
+
 if __name__ == '__main__':
     app.run(debug=True)
